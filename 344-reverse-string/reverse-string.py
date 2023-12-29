@@ -4,4 +4,4 @@ class Solution(object):
         :type s: List[str]
         :rtype: None Do not return anything, modify s in-place instead.
         """
-        s.reverse()
+        s[:] = s[::-1]
