@@ -4,6 +4,8 @@ class Solution(object):
         :type bank: List[str]
         :rtype: int
         """
+        if len(bank) < 2:
+            return 0
         count = count_one = temp = 0
         for string in bank:
             temp = count_one
