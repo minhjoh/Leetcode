@@ -4,17 +4,10 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        flag = True
-        while flag:
-            flag = False
-            i = 0
-            while i < len(s) - 1:
-                try:
-                    if ord(s[i]) == ord(s[i+1]) + 32 or ord(s[i]) == ord(s[i+1]) - 32:
-                        s = s[:i] + s[i+2:]
-                        flag = True
-                    else:
-                        i += 1
-                except IndexError:
-                    pass
-        return s
+        stack = []
+        for c in s:
+            if stack and abs(ord(stack[-1]) - ord(c)) == 32:
+                stack.pop()
+            else:
+                stack.append(c)
+        return ''.join(stack)
