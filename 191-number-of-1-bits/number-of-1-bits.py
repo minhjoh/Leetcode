@@ -7,4 +7,4 @@ class Solution(object):
         if n == 0:
             return 0
         else:
-            return (n & 1) + self.hammingWeight(n//2)
+            return (n%2) + self.hammingWeight(n//2)
