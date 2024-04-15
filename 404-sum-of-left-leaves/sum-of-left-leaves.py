@@ -15,7 +15,7 @@ class Solution:
                 left = dfs(root.left, True)
             if root.right:
                 right = dfs(root.right, False)
-            return is_left
+            return 
         dfs(root, False)
         return s
         
