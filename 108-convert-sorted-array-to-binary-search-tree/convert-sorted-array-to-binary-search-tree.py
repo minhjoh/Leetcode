@@ -14,7 +14,7 @@ class Solution(object):
         if not n:
             return None
 
-        mid = (n)//2
+        mid = n//2
         root = TreeNode(nums[mid])
 
         root.left = self.sortedArrayToBST(nums[:mid])
