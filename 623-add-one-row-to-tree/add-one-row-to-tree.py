@@ -29,6 +29,7 @@ class Solution:
         if depth == 1:
             new_root = TreeNode(val, root, None)
             return new_root
+        
         dfs(root, 1)
         return root
         
