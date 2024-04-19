@@ -18,7 +18,6 @@ class Solution:
                 dfs(i, j - 1)
                 dfs(i + 1, j)
                 dfs(i - 1, j)
-                return
                     
         sum_land = 0
         for i in range(len(grid)):
