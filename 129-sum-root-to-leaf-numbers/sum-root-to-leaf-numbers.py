@@ -7,14 +7,15 @@
 class Solution:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
         def dfs(root, val):
+            nonlocal sum
             if not root:
                 return
             val = val * 10 + root.val
             if not root.left and not root.right:
-                li.append(val)
+                sum += val
             dfs(root.left, val)
             dfs(root.right, val)
 
-        li = []
+        sum = 0
         dfs(root, 0)
-        return sum(li)
+        return sum
