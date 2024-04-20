@@ -9,13 +9,13 @@ class Solution:
         s = 0
         def dfs(root,is_left):
             nonlocal s
+            if not root:
+                return
             if not root.left and not root.right and is_left:
                 s += root.val
-            if root.left:
-                left = dfs(root.left, True)
-            if root.right:
-                right = dfs(root.right, False)
-            return 
+            left = dfs(root.left, True)
+            right = dfs(root.right, False)
+            
         dfs(root, False)
         return s
         
