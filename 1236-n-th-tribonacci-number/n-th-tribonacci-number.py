@@ -4,13 +4,11 @@ class Solution:
             return 0
         if n == 1 or n == 2:
             return 1
-        a = 0
-        b = c = 1
+
+        a, b, c = 0, 1, 1
         for i in range(n-2):
-            temp = c
-            c = a+b+c
-            a = b
-            b = temp
+            a, b, c = b, c, a+b+c
+
         return c
             
         
