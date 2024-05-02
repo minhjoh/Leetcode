@@ -1,12 +1,12 @@
 class Solution:
     def findMaxK(self, nums: List[int]) -> int:
-        new_set = set(nums)
-        length = len(new_set)
+        nums = set(nums)
+        length = len(nums)
         for i in range(length):
-            min_num = min(new_set)
-            new_set.remove(min_num)
-            new_set.add(-min_num)
-            if len(new_set) != length:
+            min_num = min(nums)
+            nums.remove(min_num)
+            nums.add(-min_num)
+            if len(nums) != length:
                 return -min_num
         return -1
 
