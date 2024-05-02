@@ -4,6 +4,8 @@ class Solution:
         length = len(nums)
         for i in range(length):
             min_num = min(nums)
+            if min_num > 0:
+                break
             nums.remove(min_num)
             nums.add(-min_num)
             if len(nums) != length:
