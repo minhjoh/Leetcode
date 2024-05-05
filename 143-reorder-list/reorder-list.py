@@ -13,12 +13,17 @@ class Solution:
         while curr:
             stack.append(curr)
             curr = curr.next
+
         left, right = 0, len(stack) - 1
+
         while left < right:
             temp = stack.pop()
-            stack[-1].next = None
             curr = stack[left]
+            tail = stack[-1]
+
+            tail.next = None
             temp.next = curr.next
             curr.next = temp
+            
             right -= 1
             left += 1
