@@ -4,8 +4,8 @@ class Solution:
         left, right = 0, len(nums)-1
         count = 0
         while left < right:
-            sum = nums[left] + nums[right]
-            if sum < target:
+            pair_sum = nums[left] + nums[right]
+            if pair_sum < target:
                 count += right-left
                 left += 1
             else:
