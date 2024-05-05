@@ -12,21 +12,20 @@ class Solution:
         while curr.next:
             size += 1
             curr = curr.next
-
-        if k % size == 0:
+        
+        k %= size
+        
+        if k == 0:
             return head
-
-        if k > size:
-            k %= size
         
         curr.next = head
+        
         curr = head
-        i = 0
-        steps = size - k - 1
-        while i < steps:
-            i += 1
+        for _ in range(size - k - 1):
             curr = curr.next
-        start = curr.next
+        
+        new_head = curr.next
         curr.next = None
-        return start
+        
+        return new_head
         
