@@ -2,17 +2,22 @@ class Solution:
     def findRelativeRanks(self, score: List[int]) -> List[str]:
         dic = {score[i]: i for i in range(len(score))}
         
-        sorted_dic = sorted(dic.items(), reverse=True)
+        heap = []
+        for num, index in dic.items():
+            heapq.heappush(heap, (num, index))
         
-        for rank, (val, index) in enumerate(sorted_dic, 1):
+        rank = len(score)
+        while heap:
+            pos = heapq.heappop(heap)
             if rank == 1:
-                val = "Gold Medal"
+                score[pos[1]] = "Gold Medal"
             elif rank == 2:
-                val = "Silver Medal"
+                score[pos[1]] = "Silver Medal"
             elif rank == 3:
-                val = "Bronze Medal"
+                score[pos[1]] = "Bronze Medal"
             else:
-                val = str(rank)
-            score[index] = val
-        
+                score[pos[1]] = str(rank)
+            rank -= 1
         return score
+
+        
