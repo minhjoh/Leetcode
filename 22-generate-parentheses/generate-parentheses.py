@@ -2,16 +2,15 @@ class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         res = []
 
-        def dfs(cur, open, close, n):
-            if len(cur) == 2 * n:
+        def dfs(string, open, close):
+            if len(string) == 2 * n:
                 if open == close:
-                    res.append(cur)
+                    res.append(string)
                 return
-
             if open < n:
-                dfs(cur + "(", open + 1, close, n)
+                dfs(string + "(", open + 1, close)
             if open > close:
-                dfs(cur + ")", open, close + 1, n)
-
-        dfs("", 0, 0, n)
+                dfs(string + ")", open, close + 1)
+            
+        dfs("", 0, 0)
         return res
