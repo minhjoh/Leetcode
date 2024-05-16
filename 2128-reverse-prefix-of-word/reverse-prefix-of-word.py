@@ -9,4 +9,4 @@ class Solution:
                 prefix = prefix[::-1]
                 found_ch = True
         
-        return prefix + word[len(prefix):]
+        return prefix
