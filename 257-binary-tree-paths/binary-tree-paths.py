@@ -6,25 +6,21 @@
 #         self.right = right
 class Solution:
     def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
-        if not root:
-            return []
+        ans = []
 
-        res = []
-        stack = [(root, f"{root.val}")]
-
-        while stack:
-            node, path = stack.pop()
-            
-            # Nếu là lá thì thêm đường đi vào kết quả
+        def dfs(node, path):
+            if not node:
+                return
             if not node.left and not node.right:
-                res.append(path)
-            
-            # Nếu có nhánh phải thì thêm vào stack
-            if node.right:
-                stack.append((node.right, f"{path}->{node.right.val}"))
-            
-            # Nếu có nhánh trái thì thêm vào stack
-            if node.left:
-                stack.append((node.left, f"{path}->{node.left.val}"))
+                path.append(str(node.val))
+                ans.append("->".join(path))
+                path.pop()
+                return
+            path.append(str(node.val))
+            dfs(node.left, path)
+            dfs(node.right, path)
+            path.pop()
         
-        return res
+        dfs(root, [])
+        
+        return ans
