@@ -1,15 +1,13 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        def backtrack(li, i):
-            if sum(li) == target:
-                res.append(li)
-                return
-            elif sum(li) > target:
-                return 
-            for i in range(i, n):
-                backtrack(li + [candidates[i]], i)
+        output = []
+        def dfs(start, combo, target):
+            if target == 0:
+                output.append(combo)
             
-        res = []
-        n = len(candidates)
-        backtrack([], 0)
-        return res
+            for i in range(start, len(candidates)):
+                if target - candidates[i] >= 0:
+                    dfs(i, combo + [candidates[i]], target - candidates[i])
+        
+        dfs(0, [], target)
+        return output
